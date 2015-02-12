@@ -1,0 +1,24 @@
+[submodule "jove"]
+	path = jove
+	url = https://github.com/jove-sh/jove
+[submodule "jove-jupyter-frontend"]
+	path = jove-jupyter-frontend
+	url = https://github.com/jove-sh/jove-jupyter-frontend
+[submodule "jove-scala"]
+	path = jove-scala
+	url = https://github.com/jove-sh/jove-scala
+[submodule "jove-spark"]
+	path = jove-spark
+	url = https://github.com/jove-sh/jove-spark
+[submodule "jove-embedded"]
+	path = jove-embedded
+	url = https://github.com/jove-sh/jove-embedded
+[submodule "jove-play-plugin"]
+	path = jove-play-plugin
+	url = https://github.com/jove-sh/jove-play-plugin
+[submodule "jove-jupyter"]
+	path = jove-jupyter
+	url = https://github.com/jove-sh/jove-jupyter
+[submodule "sbt-notebook"]
+	path = sbt-notebook
+	url = https://github.com/alexarchambault/sbt-notebook.git

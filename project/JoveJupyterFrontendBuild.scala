@@ -1,0 +1,1 @@
+../jove-jupyter-frontend/project/JoveJupyterFrontendBuild.scala

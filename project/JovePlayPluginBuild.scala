@@ -1,0 +1,1 @@
+../jove-play-plugin/project/JovePlayPluginBuild.scala

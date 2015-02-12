@@ -1,0 +1,1 @@
+../jove/project/plugins.sbt
