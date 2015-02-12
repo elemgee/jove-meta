@@ -24,7 +24,7 @@ object MetaJoveScalaBuild extends JoveScalaBuild(
   crossScalaVersionsStr = Params.crossScalaVersionsStr,
   base = file("jove-scala"),
   joveCoreServerProject = Some { p =>
-    p.dependsOn(MetaJoveBuild.core, MetaJoveBuild.kernelServer)
+    p.dependsOn(MetaJoveBuild.kernel)
   }
 )
 
@@ -33,7 +33,7 @@ object MetaJoveSparkBuild extends JoveSparkBuild(
   crossScalaVersionsStr = Params.crossScalaVersionsStr,
   base = file("jove-spark"),
   joveCoreScalaProject = Some { p =>
-    p.dependsOn(MetaJoveBuild.core, MetaJoveScalaBuild.root)
+    p.dependsOn(MetaJoveScalaBuild.root)
   }
 )
 
@@ -42,7 +42,7 @@ object MetaJoveJupyterBuild extends JoveJupyterBuild(
   crossScalaVersionsStr = Params.crossScalaVersionsStr,
   base = file("jove-jupyter"),
   joveCoreProject = Some { p =>
-    p.dependsOn(MetaJoveBuild.core)
+    p.dependsOn(MetaJoveBuild.kernel)
   }
 )
 
@@ -51,7 +51,7 @@ object MainJoveEmbeddedBuild extends JoveEmbeddedBuild(
   crossScalaVersionsStr = Params.crossScalaVersionsStr,
   base = file("jove-embedded"),
   joveCoreServerScalaProject = Some { p =>
-    p.dependsOn(MetaJoveBuild.core, MetaJoveBuild.kernelServer, MetaJoveScalaBuild.root)
+    p.dependsOn(MetaJoveBuild.kernel, MetaJoveScalaBuild.root)
   }
 )
 
@@ -78,7 +78,7 @@ object MetaJoveMetaBuild extends JoveMetaBuild(
   crossScalaVersionsStr = Params.crossScalaVersionsStr,
   base = file("jove-meta"),
   joveCliKernelsFrontendProject = Some { p =>
-    p.dependsOn((MetaJoveBuild.notebook: ClasspathDep[ProjectReference]) +: (MetaJoveJupyterFrontendBuild.root: ClasspathDep[ProjectReference]) +: (MetaJoveBuild.kernelServer: ClasspathDep[ProjectReference]) +: Params.kernels: _*)
+    p.dependsOn((MetaJoveBuild.notebook: ClasspathDep[ProjectReference]) +: (MetaJoveJupyterFrontendBuild.root: ClasspathDep[ProjectReference]) +: (MetaJoveBuild.kernel: ClasspathDep[ProjectReference]) +: Params.kernels: _*)
   }
 )
 
@@ -92,11 +92,14 @@ object MetaJoveRootBuild extends Build {
       MetaJoveBuild.root,
       MetaJoveJupyterFrontendBuild.root,
       MetaJoveScalaBuild.root,
+      MetaJoveScalaBuild.cli,
       MetaJoveSparkBuild.root,
+      MetaJoveSparkBuild.cli,
       MetaJoveJupyterBuild.root,
+      MainJoveEmbeddedBuild.root,
+      MainJoveEmbeddedBuild.cli,
       MetaJovePlayPluginBuild.root23,
       MetaJovePlayPluginBuild.root,
-      MainJoveEmbeddedBuild.root,
       MetaJoveMetaBuild.root
     )
 }
