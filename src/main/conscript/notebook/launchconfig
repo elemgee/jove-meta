@@ -1,0 +1,16 @@
+[app]
+  version: 0.1.0-SNAPSHOT
+  org: com.github.alexarchambault.jove
+  name: jove-meta
+  class: jove.notebook.NotebookConscriptLaunch
+[scala]
+  version: 2.10.4
+[repositories]
+  local
+  sonatype-releases: https://oss.sonatype.org/content/repositories/releases/
+  sonatype-snapshots: https://oss.sonatype.org/content/repositories/snapshots/
+  maven-central
+  temporary: http://dl.bintray.com/alexandre-archambault/maven/
+  scalaz-bintray-repo: http://dl.bintray.com/scalaz/releases/
+[boot]
+  directory: ${user.home}/.conscript/boot
