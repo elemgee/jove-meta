@@ -22,3 +22,6 @@
 [submodule "sbt-notebook"]
 	path = sbt-notebook
 	url = https://github.com/alexarchambault/sbt-notebook.git
+[submodule "jove-notebook"]
+	path = jove-notebook
+	url = https://github.com/jove-sh/jove-notebook.git

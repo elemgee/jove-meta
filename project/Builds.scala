@@ -64,12 +64,21 @@ object MetaJovePlayPluginBuild extends JovePlayPluginBuild(
   }
 )
 
+object MetaJoveNotebookBuild extends JoveNotebookBuild(
+  scalaVersionStr = Params.scalaVersionStr,
+  crossScalaVersionsStr = Params.crossScalaVersionsStr,
+  base = file("jove-notebook"),
+  joveKernelProject = Some { p =>
+    p.dependsOn(MetaJoveBuild.kernel)
+  }
+)
+
 object MetaJoveJupyterFrontendBuild extends JoveJupyterFrontendBuild(
   scalaVersionStr = Params.scalaVersionStr,
   crossScalaVersionsStr = Seq("2.10.4", "2.11.2"),
   base = file("jove-jupyter-frontend"),
   joveNotebookProject = Some { p =>
-    p.dependsOn(MetaJoveBuild.notebook)
+    p.dependsOn(MetaJoveNotebookBuild.root)
   }
 )
 
@@ -78,7 +87,7 @@ object MetaJoveMetaBuild extends JoveMetaBuild(
   crossScalaVersionsStr = Params.crossScalaVersionsStr,
   base = file("jove-meta"),
   joveCliKernelsFrontendProject = Some { p =>
-    p.dependsOn((MetaJoveBuild.notebook: ClasspathDep[ProjectReference]) +: (MetaJoveJupyterFrontendBuild.root: ClasspathDep[ProjectReference]) +: (MetaJoveBuild.kernel: ClasspathDep[ProjectReference]) +: Params.kernels: _*)
+    p.dependsOn((MetaJoveNotebookBuild.root: ClasspathDep[ProjectReference]) +: (MetaJoveJupyterFrontendBuild.root: ClasspathDep[ProjectReference]) +: (MetaJoveBuild.kernel: ClasspathDep[ProjectReference]) +: Params.kernels: _*)
   }
 )
 
@@ -90,6 +99,7 @@ object MetaJoveRootBuild extends Build {
     )
     .aggregate(
       MetaJoveBuild.root,
+      MetaJoveNotebookBuild.root,
       MetaJoveJupyterFrontendBuild.root,
       MetaJoveScalaBuild.root,
       MetaJoveScalaBuild.cli,
