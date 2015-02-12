@@ -23,8 +23,8 @@ object MetaJoveScalaBuild extends JoveScalaBuild(
   scalaVersionStr = Params.scalaVersionStr,
   crossScalaVersionsStr = Params.crossScalaVersionsStr,
   base = file("jove-scala"),
-  joveCoreProject = Some { p =>
-    p.dependsOn(MetaJoveBuild.core)
+  joveCoreServerProject = Some { p =>
+    p.dependsOn(MetaJoveBuild.core, MetaJoveBuild.kernelServer)
   }
 )
 
