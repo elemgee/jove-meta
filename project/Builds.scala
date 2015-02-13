@@ -105,6 +105,7 @@ object MetaJoveRootBuild extends Build {
       MetaJoveScalaBuild.cli,
       MetaJoveSparkBuild.root,
       MetaJoveSparkBuild.cli,
+      MetaJoveSparkBuild.cliBootstrap,
       MetaJoveJupyterBuild.root,
       MainJoveEmbeddedBuild.root,
       MainJoveEmbeddedBuild.cli,
