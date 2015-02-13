@@ -71,9 +71,7 @@ class JoveMetaBuild(scalaVersionStr: String, crossScalaVersionsStr: Seq[String],
         "ch.qos.logback" % "logback-classic" % "1.0.13"
       ),
       xerial.sbt.Pack.packMain := Map(
-        "jove-notebook" -> "jove.notebook.JoveNotebook",
-        "jove-scala" -> "jove.scala.JoveScala",
-        "jove-spark" -> "jove.spark.JoveSparkBootstrap"
+        "jove-notebook" -> "jove.notebook.JoveNotebook"
       )
     )
     .withJoveCliKernelsFrontend

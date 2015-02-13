@@ -7,8 +7,9 @@ object Params {
   val scalaVersionStr = scala211VersionStr
   val crossScalaVersionsStr = Seq(scala210VersionStr, scala211VersionStr)
   def kernels = Seq(
-    MetaJoveScalaBuild.root: ClasspathDep[ProjectReference],
-    MetaJoveSparkBuild.root: ClasspathDep[ProjectReference],
+    MetaJoveScalaBuild.cli: ClasspathDep[ProjectReference],
+    MetaJoveSparkBuild.cli: ClasspathDep[ProjectReference],
+    MetaJoveSparkBuild.cliBootstrap: ClasspathDep[ProjectReference],
     MetaJoveJupyterBuild.root: ClasspathDep[ProjectReference]
   )
 }
@@ -95,7 +96,9 @@ object MetaJoveRootBuild extends Build {
   lazy val root = Project(id = "jove-root", base = file("."))
     .settings(
       scalaVersion := Params.scalaVersionStr,
-      crossScalaVersions := Params.crossScalaVersionsStr
+      crossScalaVersions := Params.crossScalaVersionsStr,
+      publish := (),
+      publishLocal := ()
     )
     .aggregate(
       MetaJoveBuild.root,
