@@ -1,0 +1,13 @@
+language: scala
+
+scala:
+- 2.11.2
+- 2.10.4
+
+jdk:
+- oraclejdk7
+
+script: sbt ++${TRAVIS_SCALA_VERSION} jove-meta/pack jove-scala-cli/pack jove-spark-cli/pack jove-spark-cli-bootstrap/pack
+
+sudo: false
+
