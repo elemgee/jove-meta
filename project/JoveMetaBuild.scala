@@ -31,7 +31,7 @@ class JoveMetaBuild(scalaVersionStr: String, crossScalaVersionsStr: Seq[String],
   )
 
   private val commonSettings = Seq(
-    organization := "com.github.alexarchambault.jove", // temporary, should be "sh.jove"
+    organization := "sh.jove",
     version := "0.1.0-SNAPSHOT",
     scalaVersion := scalaVersionStr,
     crossScalaVersions := crossScalaVersionsStr,
