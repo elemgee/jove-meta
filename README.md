@@ -2,6 +2,8 @@
 
 Meta-project for Jove
 
+[![Build Status](https://travis-ci.org/jove-sh/jove-meta.svg?branch=master)](https://travis-ci.org/jove-sh/jove-meta)
+
 To checkout and build Jove with all its sub-projects, do
 
     $ git clone --recursive https://github.com/jove-sh/jove-meta.git
