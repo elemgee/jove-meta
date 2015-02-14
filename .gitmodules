@@ -10,12 +10,6 @@
 [submodule "jove-spark"]
 	path = jove-spark
 	url = https://github.com/jove-sh/jove-spark
-[submodule "jove-embedded"]
-	path = jove-embedded
-	url = https://github.com/jove-sh/jove-embedded
-[submodule "jove-play-plugin"]
-	path = jove-play-plugin
-	url = https://github.com/jove-sh/jove-play-plugin
 [submodule "jove-jupyter"]
 	path = jove-jupyter
 	url = https://github.com/jove-sh/jove-jupyter

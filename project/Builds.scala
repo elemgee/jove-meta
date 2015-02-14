@@ -35,6 +35,9 @@ object MetaJoveSparkBuild extends JoveSparkBuild(
   base = file("jove-spark"),
   joveCoreScalaProject = Some { p =>
     p.dependsOn(MetaJoveScalaBuild.root)
+  },
+  joveScalaCliProject = Some { p =>
+    p.dependsOn(MetaJoveScalaBuild.cli)
   }
 )
 
@@ -44,24 +47,6 @@ object MetaJoveJupyterBuild extends JoveJupyterBuild(
   base = file("jove-jupyter"),
   joveCoreProject = Some { p =>
     p.dependsOn(MetaJoveBuild.kernel)
-  }
-)
-
-object MainJoveEmbeddedBuild extends JoveEmbeddedBuild(
-  scalaVersionStr = Params.scalaVersionStr,
-  crossScalaVersionsStr = Params.crossScalaVersionsStr,
-  base = file("jove-embedded"),
-  joveCoreServerScalaProject = Some { p =>
-    p.dependsOn(MetaJoveBuild.kernel, MetaJoveScalaBuild.root)
-  }
-)
-
-object MetaJovePlayPluginBuild extends JovePlayPluginBuild(
-  scalaVersionStr = Params.scalaVersionStr,
-  crossScalaVersionsStr = Params.crossScalaVersionsStr,
-  base = file("jove-play-plugin"),
-  joveEmbeddedProject = Some { p =>
-    p.dependsOn(MainJoveEmbeddedBuild.root)
   }
 )
 
@@ -104,16 +89,17 @@ object MetaJoveRootBuild extends Build {
       MetaJoveBuild.root,
       MetaJoveNotebookBuild.root,
       MetaJoveJupyterFrontendBuild.root,
+      MetaJoveScalaBuild.core,
       MetaJoveScalaBuild.root,
       MetaJoveScalaBuild.cli,
+      MetaJoveScalaBuild.embedded,
+      MetaJoveScalaBuild.embeddedCli,
+      MetaJoveScalaBuild.playPlugin,
+      MetaJoveScalaBuild.playPlugin23,
       MetaJoveSparkBuild.root,
       MetaJoveSparkBuild.cli,
       MetaJoveSparkBuild.cliBootstrap,
       MetaJoveJupyterBuild.root,
-      MainJoveEmbeddedBuild.root,
-      MainJoveEmbeddedBuild.cli,
-      MetaJovePlayPluginBuild.root23,
-      MetaJovePlayPluginBuild.root,
       MetaJoveMetaBuild.root
     )
 }
