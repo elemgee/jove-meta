@@ -104,8 +104,10 @@ object MetaJoveRootBuild extends Build {
     .aggregate(
       MetaJoveBuild.root,
       MetaJoveNotebookBuild.root,
+      MetaJoveNotebookBuild.bootstrap,
       MetaJoveJupyterFrontendBuild.root,
       MetaJoveConsoleBuild.root,
+      MetaJoveConsoleBuild.bootstrap,
       MetaJoveScalaBuild.core,
       MetaJoveScalaBuild.root,
       MetaJoveScalaBuild.cli,
