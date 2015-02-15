@@ -99,8 +99,7 @@ object MetaJoveRootBuild extends Build {
     .settings(
       scalaVersion := Params.scalaVersionStr,
       crossScalaVersions := Params.crossScalaVersionsStr,
-      publish := (),
-      publishLocal := ()
+      publishArtifact := false
     )
     .aggregate(
       MetaJoveBuild.root,
