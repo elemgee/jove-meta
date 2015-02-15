@@ -53,6 +53,7 @@ class JoveMetaBuild(scalaVersionStr: String, crossScalaVersionsStr: Seq[String],
           p.settings(
             libraryDependencies <++= Def.setting(Seq(
               "com.github.alexarchambault.jove" %% "jove-kernel-server" % version.value,
+              "com.github.alexarchambault.jove" %% "jove-console" % version.value,
               "com.github.alexarchambault.jove" %% "jove-notebook" % version.value,
               "com.github.alexarchambault.jove" %% "jove-jupyter-frontend" % version.value,
               "com.github.alexarchambault.jove" %% "jove-jupyter" % version.value,
@@ -70,9 +71,16 @@ class JoveMetaBuild(scalaVersionStr: String, crossScalaVersionsStr: Seq[String],
       libraryDependencies ++= Seq(
         "ch.qos.logback" % "logback-classic" % "1.0.13"
       ),
-      xerial.sbt.Pack.packMain := Map(
-        "jove-notebook" -> "jove.notebook.JoveNotebook"
-      )
+      xerial.sbt.Pack.packMain := {
+        var m = Map(
+          "jove-notebook" -> "jove.notebook.JoveNotebook"
+        )
+
+        if (!scalaVersion.value.startsWith("2.10."))
+          m += "jove-console" -> "jove.console.JoveConsole"
+
+        m
+      }
     )
     .withJoveCliKernelsFrontend
 }

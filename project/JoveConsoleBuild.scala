@@ -1,0 +1,1 @@
+../jove-console/project/JoveConsoleBuild.scala
