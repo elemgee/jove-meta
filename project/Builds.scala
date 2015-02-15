@@ -4,12 +4,11 @@ object Params {
   val is210 = true
   val scala210VersionStr = "2.10.4"
   val scala211VersionStr = "2.11.2"
-  val scalaVersionStr = scala211VersionStr
+  val scalaVersionStr = scala210VersionStr
   val crossScalaVersionsStr = Seq(scala210VersionStr, scala211VersionStr)
   def kernels = Seq(
-    MetaJoveScalaBuild.cli: ClasspathDep[ProjectReference],
-    MetaJoveSparkBuild.cli: ClasspathDep[ProjectReference],
-    MetaJoveSparkBuild.cliBootstrap: ClasspathDep[ProjectReference],
+    MetaJoveScalaBuild.root: ClasspathDep[ProjectReference],
+    MetaJoveSparkBuild.root13: ClasspathDep[ProjectReference],
     MetaJoveJupyterBuild.root: ClasspathDep[ProjectReference]
   )
 }
@@ -96,8 +95,12 @@ object MetaJoveRootBuild extends Build {
       MetaJoveScalaBuild.embeddedCli,
       MetaJoveScalaBuild.playPlugin,
       MetaJoveScalaBuild.playPlugin23,
-      MetaJoveSparkBuild.root,
-      MetaJoveSparkBuild.cli,
+      MetaJoveSparkBuild.root11,
+      MetaJoveSparkBuild.cli11,
+      MetaJoveSparkBuild.root12,
+      MetaJoveSparkBuild.cli12,
+      MetaJoveSparkBuild.root13,
+      MetaJoveSparkBuild.cli13,
       MetaJoveSparkBuild.cliBootstrap,
       MetaJoveJupyterBuild.root,
       MetaJoveMetaBuild.root
