@@ -19,3 +19,6 @@
 [submodule "jove-notebook"]
 	path = jove-notebook
 	url = https://github.com/jove-sh/jove-notebook.git
+[submodule "jove-console"]
+	path = jove-console
+	url = ssh://git@other.alexandre.ar.chambau.lt:53236/home/git/projects/jove-console
