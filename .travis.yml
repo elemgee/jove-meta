@@ -7,7 +7,7 @@ scala:
 jdk:
 - oraclejdk7
 
-script: sbt ++${TRAVIS_SCALA_VERSION} jove-meta/pack jove-scala-cli/pack jove-spark-cli-11-bootstrap/pack jove-spark-cli-12-bootstrap/pack jove-spark-cli-13-bootstrap/pack
+script: sbt ++${TRAVIS_SCALA_VERSION} jove-meta/pack jove-scala-cli/pack jove-spark-cli-bootstrap/pack jove-spark-cli-11/pack jove-spark-cli-12/pack jove-spark-cli-13/pack
 
 sudo: false
 
