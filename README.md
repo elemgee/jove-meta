@@ -22,6 +22,10 @@ Then run
 
     $ ./jove-meta/target/pack/bin/jove-notebook
 
+or
+
+    $ ./jove-meta/target/pack/bin/jove-console
+
 Can also be used to open Jove and all its sub-projects at once in an IDE.
 
 --
