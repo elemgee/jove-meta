@@ -4,14 +4,24 @@ Meta-project for Jove
 
 [![Build Status](https://travis-ci.org/jove-sh/jove-meta.svg?branch=master)](https://travis-ci.org/jove-sh/jove-meta)
 
-To checkout and build Jove with all its sub-projects, do
+A meta project for [Jove Notebook](https://github.com/jove-sh/jove-notebook),
+[Jove Console](https://github.com/jove-sh/jove-console), their
+[Scala](https://github.com/jove-sh/jove-scala),
+[Spark](https://github.com/jove-sh/jove-spark), and
+[Jupyter](https://github.com/jove-sh/jove-jupyter) kernels,
+and the notebook [front-end](https://github.com/jove-sh/jove-jupyter-frontend).
+
+This project allows to build and run the whole Jove project at once, including all its kernels
+and its notebook server and console.
+
+To checkout and build it, do
 
     $ git clone --recursive https://github.com/jove-sh/jove-meta.git
     $ cd jove-meta
     $ sbt jove-meta/pack
 
 To have the Spark kernels work, you'll have to force the scala libraries
-to be in 2.11.2,
+in the resulting JAR directory (`jove-meta/target/pack/lib`) to be in 2.11.2, with
 
     $ rm -f jove-meta/target/pack/lib/scala-*2.11.[45]*
     $ for i in compiler library reflect; do
@@ -22,15 +32,16 @@ Then run
 
     $ ./jove-meta/target/pack/bin/jove-notebook
 
-or
+to launch the notebook server, or
 
     $ ./jove-meta/target/pack/bin/jove-console
 
-Can also be used to open Jove and all its sub-projects at once in an IDE.
+to launch the Ammonite-based console.
+
 
 --
 
-Sub-projects build state:
+Sub-projects statuses:
 
 Jove [![Build Status](https://travis-ci.org/jove-sh/jove.svg?branch=master)](https://travis-ci.org/jove-sh/jove)
 
