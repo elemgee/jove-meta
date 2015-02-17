@@ -1,13 +1,14 @@
 language: scala
-
 scala:
 - 2.11.2
 - 2.10.4
-
 jdk:
 - oraclejdk7
-
-script: sbt ++${TRAVIS_SCALA_VERSION} jove-meta/pack jove-scala-cli/pack jove-spark-cli-bootstrap/pack jove-spark-cli-11/pack jove-spark-cli-12/pack jove-spark-cli-13/pack
+script: sbt ++${TRAVIS_SCALA_VERSION} jove-meta/pack jove-scala-cli/pack jove-spark-cli-bootstrap/pack jove-spark-cli-11/pack jove-spark-cli-12/pack jove-spark-cli-13/pack $(if [[ "${TRAVIS_PULL_REQUEST}" ==
+  "false" && ${JAVA_HOME} == $(jdk_switcher home oraclejdk7) && "${TRAVIS_BRANCH}" == "master" ]]; then echo "jove-meta/publish"; fi)
 
 sudo: false
-
+env:
+  global:
+  - secure: ZgSQV+4AYY/fTZQYNH5Os48Gs+fjCzec2k1GNf9doITwAJQSd+Sij9Q3Mo+05UoWk+CR/Pamlv8UUojaLJd+uX0one0b4bY7oQRvax1e0ncObkUZueka318duYnrzdXJHMUnV5OfAW2EhhMWsfdcAot6AJdPIgMHQCzeKwu9HmE=
+  - secure: OOLo7h6gPcDsOK+AA21HXurLESqNq38pvAv4LkEwtCOOV1Z2R3WIbU3OykoDxwhb58+HcjFkCq8BGjLYKGCnQorTQmI8bmlFtUbZlm3qLh/mS6/kaJx+YgRqi6Hs8lyCn5fZfsJ8ztub3tffLQi8kq8WHkz3DHmVJUhMsh1ouF4=
