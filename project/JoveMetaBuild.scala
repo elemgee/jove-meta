@@ -15,11 +15,6 @@ class JoveMetaBuild(scalaVersionStr: String, crossScalaVersionsStr: Seq[String],
     scmInfo := Some(ScmInfo(url("https://github.com/jove-sh/jove-meta"), "git@github.com:jove-sh/jove-meta.git")),
     pomExtra := {
       <url>https://github.com/jove-sh/jove-meta</url>
-      <scm>
-        <connection>scm:git:github.com/jove-sh/jove-meta.git</connection>
-        <developerConnection>scm:git:git@github.com:jove-sh/jove-meta.git</developerConnection>
-        <url>github.com/jove-sh/jove-meta.git</url>
-      </scm>
       <developers>
         <developer>
           <id>alexarchambault</id>
@@ -40,15 +35,15 @@ class JoveMetaBuild(scalaVersionStr: String, crossScalaVersionsStr: Seq[String],
 
   private val commonSettings = Seq(
     organization := "sh.jove",
-    version := "0.1.0-SNAPSHOT",
+    version := "0.1.0",
     scalaVersion := scalaVersionStr,
     crossScalaVersions := crossScalaVersionsStr,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature"),
     initialCommands in Compile := "import jove._\n",
     resolvers ++= Seq(
       "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
-      Resolver.sonatypeRepo("releases"),
-      Resolver.sonatypeRepo("snapshots")
+      Resolver.sonatypeRepo("releases")
+      //Resolver.sonatypeRepo("snapshots")
     )
   ) ++ xerial.sbt.Pack.packSettings ++ publishSettings
 
@@ -60,7 +55,7 @@ class JoveMetaBuild(scalaVersionStr: String, crossScalaVersionsStr: Seq[String],
         case None =>
           p.settings(
             libraryDependencies <++= Def.setting(Seq(
-              "com.github.alexarchambault.jove" %% "jove-kernel-server" % version.value,
+              "com.github.alexarchambault.jove" %% "jove-kernel" % version.value,
               "com.github.alexarchambault.jove" %% "jove-console" % version.value,
               "com.github.alexarchambault.jove" %% "jove-notebook" % version.value,
               "com.github.alexarchambault.jove" %% "jove-jupyter-frontend" % version.value,
