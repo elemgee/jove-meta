@@ -1,0 +1,17 @@
+[app]
+  version: 0.1.0
+  org: sh.jove
+  name: jove-spark-cli_1.3
+  class: jove.spark.JoveSparkConscriptLaunch
+[scala]
+  version: 2.11.2
+[repositories]
+  local
+  sonatype-releases: https://oss.sonatype.org/content/repositories/releases/
+  typesafe-ivy-releases: http://repo.typesafe.com/typesafe/ivy-releases/, [organization]/[module]/[revision]/[type]s/[artifact](-[classifier]).[ext]
+  maven-central
+  temporary: http://dl.bintray.com/alexandre-archambault/maven/
+  scalaz-bintray-repo: http://dl.bintray.com/scalaz/releases/
+  spark-13-snapshot-1-repo: https://repository.apache.org/content/repositories/orgapachespark-1068
+[boot]
+  directory: ${user.home}/.conscript/boot
