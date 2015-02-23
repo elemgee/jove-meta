@@ -66,6 +66,12 @@ object MetaJoveNotebookBuild extends JoveNotebookBuild(
   },
   joveSparkProject = Some { p =>
     p.dependsOn(MetaJoveSparkBuild.root12)
+  },
+  joveEmbeddedScalaProject = Some { p =>
+    p.dependsOn(MetaJoveScalaBuild.embedded)
+  },
+  joveEmbeddedSparkProject = Some { p =>
+    p.dependsOn(MetaJoveSparkBuild.embedded12)
   }
 )
 
@@ -90,6 +96,12 @@ object MetaJoveConsoleBuild extends JoveConsoleBuild(
   },
   joveSparkProject = Some { p =>
     p.dependsOn(MetaJoveSparkBuild.root12)
+  },
+  joveEmbeddedScalaProject = Some { p =>
+    p.dependsOn(MetaJoveScalaBuild.embedded)
+  },
+  joveEmbeddedSparkProject = Some { p =>
+    p.dependsOn(MetaJoveSparkBuild.embedded12)
   }
 )
 
