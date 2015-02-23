@@ -57,6 +57,15 @@ object MetaJoveNotebookBuild extends JoveNotebookBuild(
   base = file("jove-notebook"),
   joveKernelProject = Some { p =>
     p.dependsOn(MetaJoveBuild.kernel)
+  },
+  joveFrontendProject = Some { p =>
+    p.dependsOn(MetaJoveJupyterFrontendBuild.root)
+  },
+  joveScalaProject = Some { p =>
+    p.dependsOn(MetaJoveScalaBuild.root)
+  },
+  joveSparkProject = Some { p =>
+    p.dependsOn(MetaJoveSparkBuild.root12)
   }
 )
 
@@ -75,6 +84,12 @@ object MetaJoveConsoleBuild extends JoveConsoleBuild(
   base = file("jove-console"),
   joveKernelProject = Some { p =>
     p.dependsOn(MetaJoveBuild.kernel)
+  },
+  joveScalaProject = Some { p =>
+    p.dependsOn(MetaJoveScalaBuild.root)
+  },
+  joveSparkProject = Some { p =>
+    p.dependsOn(MetaJoveSparkBuild.root12)
   }
 )
 
@@ -104,10 +119,8 @@ object MetaJoveRootBuild extends Build {
     .aggregate(
       MetaJoveBuild.root,
       MetaJoveNotebookBuild.root,
-      MetaJoveNotebookBuild.bootstrap,
       MetaJoveJupyterFrontendBuild.root,
       MetaJoveConsoleBuild.root,
-      MetaJoveConsoleBuild.bootstrap,
       MetaJoveScalaBuild.core,
       MetaJoveScalaBuild.root,
       MetaJoveScalaBuild.cli,
@@ -130,7 +143,6 @@ object MetaJoveRootBuild extends Build {
       MetaJoveSparkBuild.embeddedCli11,
       MetaJoveSparkBuild.embeddedCli12,
       MetaJoveSparkBuild.embeddedCli13,
-      MetaJoveSparkBuild.cliBootstrap,
       MetaJoveJupyterBuild.root,
       MetaJoveMetaBuild.root
     )
