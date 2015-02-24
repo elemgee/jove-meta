@@ -64,14 +64,20 @@ object MetaJoveNotebookBuild extends JoveNotebookBuild(
   joveScalaProject = Some { p =>
     p.dependsOn(MetaJoveScalaBuild.root)
   },
-  joveSparkProject = Some { p =>
+  joveSpark12Project = Some { p =>
     p.dependsOn(MetaJoveSparkBuild.root12)
+  },
+  joveSpark13Project = Some { p =>
+    p.dependsOn(MetaJoveSparkBuild.root13)
   },
   joveEmbeddedScalaProject = Some { p =>
     p.dependsOn(MetaJoveScalaBuild.embedded)
   },
-  joveEmbeddedSparkProject = Some { p =>
+  joveEmbeddedSpark12Project = Some { p =>
     p.dependsOn(MetaJoveSparkBuild.embedded12)
+  },
+  joveEmbeddedSpark13Project = Some { p =>
+    p.dependsOn(MetaJoveSparkBuild.embedded13)
   }
 )
 
@@ -94,14 +100,20 @@ object MetaJoveConsoleBuild extends JoveConsoleBuild(
   joveScalaProject = Some { p =>
     p.dependsOn(MetaJoveScalaBuild.root)
   },
-  joveSparkProject = Some { p =>
+  joveSpark12Project = Some { p =>
     p.dependsOn(MetaJoveSparkBuild.root12)
+  },
+  joveSpark13Project = Some { p =>
+    p.dependsOn(MetaJoveSparkBuild.root13)
   },
   joveEmbeddedScalaProject = Some { p =>
     p.dependsOn(MetaJoveScalaBuild.embedded)
   },
-  joveEmbeddedSparkProject = Some { p =>
+  joveEmbeddedSpark12Project = Some { p =>
     p.dependsOn(MetaJoveSparkBuild.embedded12)
+  },
+  joveEmbeddedSpark13Project = Some { p =>
+    p.dependsOn(MetaJoveSparkBuild.embedded13)
   }
 )
 
