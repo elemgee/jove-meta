@@ -44,7 +44,8 @@ class JoveMetaBuild(scalaVersionStr: String, crossScalaVersionsStr: Seq[String],
       "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
       Resolver.sonatypeRepo("releases"),
       Resolver.sonatypeRepo("snapshots")
-    )
+    ),
+    scalacOptions += "-target:jvm-1.7"
   ) ++ xerial.sbt.Pack.packSettings ++ publishSettings
 
   private implicit def projectMethods(p: Project) = new {
