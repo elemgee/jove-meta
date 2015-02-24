@@ -35,7 +35,7 @@ class JoveMetaBuild(scalaVersionStr: String, crossScalaVersionsStr: Seq[String],
 
   private val commonSettings = Seq(
     organization := "sh.jove",
-    version := "0.1.1-SNAPSHOT",
+    version := "0.1.1-1-SNAPSHOT",
     scalaVersion := scalaVersionStr,
     crossScalaVersions := crossScalaVersionsStr,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature"),
