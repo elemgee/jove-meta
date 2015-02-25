@@ -3,6 +3,7 @@
 Meta-project for Jove
 
 [![Build Status](https://travis-ci.org/jove-sh/jove-meta.svg?branch=master)](https://travis-ci.org/jove-sh/jove-meta)
+[![Join the chat at https://gitter.im/jove-sh/jove-notebook](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jove-sh/jove-notebook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A meta project for [Jove Notebook](https://github.com/jove-sh/jove-notebook),
 [Jove Console](https://github.com/jove-sh/jove-console), their
