@@ -6,13 +6,6 @@ object Params {
   val scala211VersionStr = "2.11.2"
   val scalaVersionStr = scala211VersionStr
   val crossScalaVersionsStr = Seq(scala210VersionStr, scala211VersionStr)
-  def kernels = Seq(
-    MetaJoveScalaBuild.root: ClasspathDep[ProjectReference],
-    // MetaJoveScalaBuild.embedded: ClasspathDep[ProjectReference],
-    MetaJoveSparkBuild.root12: ClasspathDep[ProjectReference],
-    // MetaJoveSparkBuild.embedded12: ClasspathDep[ProjectReference],
-    MetaJoveJupyterBuild.root: ClasspathDep[ProjectReference]
-  )
 }
 
 object MetaJoveBuild extends JoveBuild(
@@ -60,24 +53,6 @@ object MetaJoveNotebookBuild extends JoveNotebookBuild(
   },
   joveFrontendProject = Some { p =>
     p.dependsOn(MetaJoveJupyterFrontendBuild.root)
-  },
-  joveScalaProject = Some { p =>
-    p.dependsOn(MetaJoveScalaBuild.root)
-  },
-  joveSpark12Project = Some { p =>
-    p.dependsOn(MetaJoveSparkBuild.root12)
-  },
-  joveSpark13Project = Some { p =>
-    p.dependsOn(MetaJoveSparkBuild.root13)
-  },
-  joveEmbeddedScalaProject = Some { p =>
-    p.dependsOn(MetaJoveScalaBuild.embedded)
-  },
-  joveEmbeddedSpark12Project = Some { p =>
-    p.dependsOn(MetaJoveSparkBuild.embedded12)
-  },
-  joveEmbeddedSpark13Project = Some { p =>
-    p.dependsOn(MetaJoveSparkBuild.embedded13)
   }
 )
 
@@ -96,40 +71,6 @@ object MetaJoveConsoleBuild extends JoveConsoleBuild(
   base = file("jove-console"),
   joveKernelProject = Some { p =>
     p.dependsOn(MetaJoveBuild.kernel)
-  },
-  joveScalaProject = Some { p =>
-    p.dependsOn(MetaJoveScalaBuild.root)
-  },
-  joveSpark12Project = Some { p =>
-    p.dependsOn(MetaJoveSparkBuild.root12)
-  },
-  joveSpark13Project = Some { p =>
-    p.dependsOn(MetaJoveSparkBuild.root13)
-  },
-  joveEmbeddedScalaProject = Some { p =>
-    p.dependsOn(MetaJoveScalaBuild.embedded)
-  },
-  joveEmbeddedSpark12Project = Some { p =>
-    p.dependsOn(MetaJoveSparkBuild.embedded12)
-  },
-  joveEmbeddedSpark13Project = Some { p =>
-    p.dependsOn(MetaJoveSparkBuild.embedded13)
-  }
-)
-
-object MetaJoveMetaBuild extends JoveMetaBuild(
-  scalaVersionStr = Params.scalaVersionStr,
-  crossScalaVersionsStr = Params.crossScalaVersionsStr,
-  base = file("jove-meta"),
-  joveCliKernelsFrontendProject = Some { p =>
-    p.dependsOn(
-      Seq[ClasspathDep[ProjectReference]](
-        MetaJoveConsoleBuild.root,
-        MetaJoveNotebookBuild.root,
-        MetaJoveJupyterFrontendBuild.root,
-        MetaJoveBuild.kernel
-      ) ++ Params.kernels : _*
-    )
   }
 )
 
@@ -143,8 +84,10 @@ object MetaJoveRootBuild extends Build {
     .aggregate(
       MetaJoveBuild.root,
       MetaJoveNotebookBuild.root,
+      MetaJoveNotebookBuild.notebookPackage,
       MetaJoveJupyterFrontendBuild.root,
       MetaJoveConsoleBuild.root,
+      MetaJoveConsoleBuild.consolePackage,
       MetaJoveScalaBuild.core,
       MetaJoveScalaBuild.root,
       MetaJoveScalaBuild.cli,
@@ -167,8 +110,7 @@ object MetaJoveRootBuild extends Build {
       MetaJoveSparkBuild.embeddedCli11,
       MetaJoveSparkBuild.embeddedCli12,
       MetaJoveSparkBuild.embeddedCli13,
-      MetaJoveJupyterBuild.root,
-      MetaJoveMetaBuild.root
+      MetaJoveJupyterBuild.root
     )
 }
 
