@@ -4,7 +4,7 @@ scala:
 - 2.10.4
 jdk:
 - oraclejdk7
-script: sbt ++${TRAVIS_SCALA_VERSION} jove-meta/pack jove-scala-cli/pack jove-spark-cli-11/pack jove-spark-cli-12/pack jove-spark-cli-13/pack
+script: sbt ++${TRAVIS_SCALA_VERSION} compile jove-scala-cli/pack jove-spark-cli-11/pack jove-spark-cli-12/pack jove-spark-cli-13/pack jove-notebook-package/pack jove-console-package/pack
 sudo: false
 env:
   global:
