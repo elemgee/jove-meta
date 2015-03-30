@@ -19,7 +19,7 @@ To checkout and build it, do
 
     $ git clone --recursive https://github.com/jove-sh/jove-meta.git
     $ cd jove-meta
-    $ sbt jove-meta/pack
+    $ sbt jove-meta:pack
 
 To have the Spark kernels work, you'll have to force the scala libraries
 in the resulting JAR directory (`jove-meta/target/pack/lib`) to be in 2.11.2, with
